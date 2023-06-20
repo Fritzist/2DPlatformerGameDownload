@@ -1,3 +1,5 @@
+# Game Download
+Download my game
 
 ## How to download the game
 - Run main.py and the game from the repository will download [the repository](https://github.com/Fritzist/cracky2Dplatformer)
@@ -7,3 +9,4 @@
 
 ## Bugs and issues
 - If you find any bugs or issues, please report them.
+
