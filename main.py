@@ -1,19 +1,32 @@
+import requests
 import os
-import shutil
+import urllib.parse
 
-def download_file(filename):
+def download_file(url, new_filename='gamepowerx.zip'):
     try:
         download_dir = os.path.expanduser("~/Downloads")
+        parsed_url = urllib.parse.urlparse(url)
+        filename = os.path.basename(parsed_url.path)
+        filename = os.path.splitext(filename)[0] + '.zip'
 
-        shutil.copy(filename, os.path.join(download_dir, filename))
-        print('Download complete, check your default Downloads folder.')
+        response = requests.get(url)
+        if response.status_code == 200:
+            with open(filename, 'wb') as file:
+                file.write(response.content)
+
+            os.rename(filename, download_dir + '/' + new_filename)
+
+            print('The file has been downloaded successfully, check your default download directory.')
+        else:
+            print('The file could not be downloaded.')
     except Exception as e:
         print(f'An error occurred: {str(e)}')
 
 def main():
-    filename = 'githubRelease.zip'
 
-    download_file(filename)
+    url = 'https://u.gamepowerx.com/api/d/7z8Cgn5'
+
+    download_file(url)
 
 if __name__ == '__main__':
     main()
