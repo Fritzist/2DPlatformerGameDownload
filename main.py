@@ -2,7 +2,7 @@ import requests
 import os
 import urllib.parse
 
-def download_file(url, new_filename='gamepowerx.zip'):
+def download_file(url, new_filename='Cracky2DPlatformer.zip'):
     try:
         download_dir = os.path.expanduser("~/Downloads")
         parsed_url = urllib.parse.urlparse(url)
